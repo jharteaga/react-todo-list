@@ -41,6 +41,12 @@ body {
   outline: 0 none;
 }
 
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .item:nth-of-type(1) {
   margin-top: 2em;
 }
@@ -49,6 +55,13 @@ body {
   font-size: 1.3rem;
   color: rgba(59, 59, 59, 0.733);
   margin-left: 0.5em;
+}
+
+.task-completed {
+  font-size: 1.3rem;
+  color: rgba(59, 59, 59, 0.733);
+  margin-left: 0.5em;
+  text-decoration: line-through;
 }
 
 @media (max-width: 768px) {

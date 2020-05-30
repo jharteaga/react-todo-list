@@ -11,6 +11,7 @@ export const saveTask = (task) => {
   const id = tasks.length + 1;
   tasks.push({ id: id, description: task, completed: false });
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  return tasks;
 };
 
 export const updateTask = (task) => {
@@ -21,4 +22,5 @@ export const updateTask = (task) => {
     }
   });
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  return tasks;
 };

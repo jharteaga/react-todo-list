@@ -1,14 +1,9 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import { saveTask } from '../Service';
 
 const NewTask = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
-
-  const handleNewTask = (task) => {
-    saveTask(task);
   };
 
   return (
@@ -19,7 +14,10 @@ const NewTask = (props) => {
           placeholder="Enter new task"
           className="new-task-txt"
           onKeyUp={(e) => {
-            if (e.keyCode === 13) handleNewTask(e.target.value);
+            if (e.keyCode === 13) {
+              props.onAddTask(e.target.value);
+              e.target.value = '';
+            }
           }}
         />
       </Form.Group>

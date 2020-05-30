@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
-import { getTasks, updateTask } from '../Service';
 
 const useStyles = makeStyles({
   root: {
@@ -53,21 +52,14 @@ const useStyles = makeStyles({
 
 function Task(props) {
   const classes = useStyles();
-  const [tasks, setTasks] = useState(getTasks());
 
-  const handleChange = (task) => {
-    updateTask(task);
-  };
-
-  useEffect(() => {}, [tasks]);
-
-  return tasks.map((task) => (
+  return props.tasks.map((task) => (
     <div className="item" key={task.id}>
       <FormControlLabel
         control={
           <Checkbox
             checked={task.completed}
-            onChange={() => handleChange(task)}
+            onChange={() => props.onUpdateTask(task)}
             name="task"
             color="primary"
             checkedIcon={
@@ -76,8 +68,18 @@ function Task(props) {
             icon={<span className={classes.icon} />}
           />
         }
-        label={<span className="task">{task.description}</span>}
+        label={
+          task.completed ? (
+            <span className="task-completed">{task.description}</span>
+          ) : (
+            <span className="task">{task.description}</span>
+          )
+        }
       />
+      <div>
+        <button className="btn btn-primary btn-sm mr-2">Update</button>
+        <button className="btn btn-danger btn-sm">Remove</button>
+      </div>
     </div>
   ));
 }
