@@ -4,7 +4,7 @@ import logo from '../img/logo.png';
 
 const NavBar = (props) => (
   <>
-    <Navbar bg="dark" variant="dark">
+    <Navbar bg="dark" variant="dark" className="navbar">
       <Navbar.Brand>
         <img
           alt=""

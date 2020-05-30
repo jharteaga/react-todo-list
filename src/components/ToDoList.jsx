@@ -1,7 +1,14 @@
 import React from 'react';
+import NewTask from './NewTask';
+import Task from './Task';
 
-function ToDoList(props) {
-  return <div></div>;
-}
+const ToDoList = (props) => {
+  return (
+    <div className="todo-container">
+      <NewTask />
+      <Task />
+    </div>
+  );
+};
 
 export default ToDoList;
