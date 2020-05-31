@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   saveTask,
   getTasks,
@@ -10,15 +10,15 @@ import NewTask from './NewTask';
 import Task from './Task';
 
 const ToDoList = (props) => {
-  const [tasks, setTasks] = useState(getTasks());
+  const [tasks, setTasks] = useState(() => getTasks());
   const [uTask, setUTask] = useState(undefined);
 
   const handleAddTask = (task) => {
-    setTasks(saveTask(task));
+    setTasks(() => saveTask(task));
   };
 
   const handleCheckedTask = (task) => {
-    setTasks(checkedTask(task));
+    setTasks(() => checkedTask(task));
   };
 
   const handleNewTaskInput = (task) => {
@@ -26,20 +26,19 @@ const ToDoList = (props) => {
   };
 
   const handleUpdateTask = (newDescription, task) => {
-    setTasks(updateTask(newDescription, task));
+    setTasks(() => updateTask(newDescription, task));
+    setUTask(() => undefined);
   };
 
   const handleRemoveTask = (task) => {
-    setTasks(removeTask(task));
+    setTasks(() => removeTask(task));
   };
-
-  useEffect(() => {}, [tasks, uTask]);
 
   return (
     <div className="todo-container">
       <NewTask
         onAddTask={handleAddTask}
-        updateTask={uTask}
+        updateTask={uTask || {}}
         onUpdateTask={handleUpdateTask}
       />
       <Task

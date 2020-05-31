@@ -80,6 +80,7 @@ function Task(props) {
         <button
           className="btn btn-primary btn-sm mr-2"
           onClick={() => props.onUpdateTaskInput(task)}
+          disabled={task.completed}
         >
           Update
         </button>
