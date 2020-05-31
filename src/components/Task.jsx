@@ -59,7 +59,7 @@ function Task(props) {
         control={
           <Checkbox
             checked={task.completed}
-            onChange={() => props.onUpdateTask(task)}
+            onChange={() => props.onCheckedTask(task)}
             name="task"
             color="primary"
             checkedIcon={
@@ -77,8 +77,18 @@ function Task(props) {
         }
       />
       <div>
-        <button className="btn btn-primary btn-sm mr-2">Update</button>
-        <button className="btn btn-danger btn-sm">Remove</button>
+        <button
+          className="btn btn-primary btn-sm mr-2"
+          onClick={() => props.onUpdateTaskInput(task)}
+        >
+          Update
+        </button>
+        <button
+          className="btn btn-danger btn-sm"
+          onClick={() => props.onRemoveTask(task)}
+        >
+          Remove
+        </button>
       </div>
     </div>
   ));

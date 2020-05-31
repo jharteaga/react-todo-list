@@ -14,11 +14,29 @@ export const saveTask = (task) => {
   return tasks;
 };
 
-export const updateTask = (task) => {
+export const checkedTask = (task) => {
   const tasks = JSON.parse(localStorage.getItem('tasks'));
   tasks.forEach((t) => {
     if (t.id === task.id) {
       t.completed = !task.completed;
+    }
+  });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  return tasks;
+};
+
+export const removeTask = (task) => {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  const newTasks = tasks.filter((t) => t.id !== task.id);
+  localStorage.setItem('tasks', JSON.stringify(newTasks));
+  return newTasks;
+};
+
+export const updateTask = (newDescription, task) => {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  tasks.forEach((t) => {
+    if (t.id === task.id) {
+      t.description = newDescription;
     }
   });
   localStorage.setItem('tasks', JSON.stringify(tasks));

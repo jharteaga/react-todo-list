@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 
-const NewTask = (props) => {
+const NewTask = ({ onAddTask, updateTask, onUpdateTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -15,7 +15,11 @@ const NewTask = (props) => {
           className="new-task-txt"
           onKeyUp={(e) => {
             if (e.keyCode === 13) {
-              props.onAddTask(e.target.value);
+              if (updateTask) {
+                onUpdateTask(e.target.value, updateTask);
+              } else {
+                onAddTask(e.target.value);
+              }
               e.target.value = '';
             }
           }}
