@@ -8,6 +8,7 @@ import {
 } from '../Service';
 import NewTask from './NewTask';
 import Task from './Task';
+import ProductivityChart from './ProductivityChart';
 
 const ToDoList = (props) => {
   const [tasks, setTasks] = useState(() => getTasks());
@@ -18,7 +19,7 @@ const ToDoList = (props) => {
   };
 
   const handleCheckedTask = (task) => {
-    setTasks(() => checkedTask(task));
+    setTasks(checkedTask(task));
   };
 
   const handleNewTaskInput = (task) => {
@@ -35,18 +36,21 @@ const ToDoList = (props) => {
   };
 
   return (
-    <div className="todo-container">
-      <NewTask
-        onAddTask={handleAddTask}
-        updateTask={uTask || {}}
-        onUpdateTask={handleUpdateTask}
-      />
-      <Task
-        tasks={tasks}
-        onCheckedTask={handleCheckedTask}
-        onRemoveTask={handleRemoveTask}
-        onUpdateTaskInput={handleNewTaskInput}
-      />
+    <div className="main-container">
+      <div className="todo-container">
+        <NewTask
+          onAddTask={handleAddTask}
+          updateTask={uTask || {}}
+          onUpdateTask={handleUpdateTask}
+        />
+        <Task
+          tasks={tasks}
+          onCheckedTask={handleCheckedTask}
+          onRemoveTask={handleRemoveTask}
+          onUpdateTaskInput={handleNewTaskInput}
+        />
+      </div>
+      <ProductivityChart tasks={tasks} />
     </div>
   );
 };

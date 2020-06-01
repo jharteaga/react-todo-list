@@ -42,3 +42,9 @@ export const updateTask = (newDescription, task) => {
   localStorage.setItem('tasks', JSON.stringify(tasks));
   return tasks;
 };
+
+export const getDataChart = (tasks) => {
+  const numCompleted = tasks.filter((t) => t.completed).length;
+  const numPending = tasks.filter((t) => !t.completed).length;
+  return { pending: numPending, completed: numCompleted };
+};
