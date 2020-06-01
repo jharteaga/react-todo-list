@@ -82,13 +82,13 @@ function Task(props) {
           onClick={() => props.onUpdateTaskInput(task)}
           disabled={task.completed}
         >
-          Update
+          <i class="fas fa-pencil-alt"></i>
         </button>
         <button
           className="btn btn-danger btn-sm"
           onClick={() => props.onRemoveTask(task)}
         >
-          Remove
+          <i class="fas fa-trash-alt"></i>
         </button>
       </div>
     </div>
