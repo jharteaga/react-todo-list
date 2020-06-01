@@ -25,8 +25,16 @@ const ProductivityChart = ({ tasks }) => {
   }, [tasks]);
 
   return (
-    <div>
-      <Doughnut data={data} width={800} height={400} />
+    <div className="chart-container">
+      <Doughnut
+        data={data}
+        width={800}
+        height={400}
+        options={{
+          maintainAspectRatio: false,
+          aspectRatio: 1,
+        }}
+      />
     </div>
   );
 };
